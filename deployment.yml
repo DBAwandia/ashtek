@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <APP_NAME>
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: <APP_NAME>
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: <APP_NAME>
+      annotations:
+        version: <VERSION> # Updated version
+    spec:
+      containers:
+        - name: <APP_NAME>
+          image: <IMAGE>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: <DEPLOYMENT_PORT>
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: <APP_NAME>-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: <SERVICE_PORT>
+      targetPort: <DEPLOYMENT_PORT>
+  selector:
+    app: <APP_NAME>
