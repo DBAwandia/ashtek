@@ -96,6 +96,7 @@ export default function Navigation() {
     </StyledNav>;
 
   // FOR SMALL AND MEDIUM SCREEN DEVICE
+  
   const SMALL_DEVICE_CONTENT = <Fragment>
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Scrollbar>
