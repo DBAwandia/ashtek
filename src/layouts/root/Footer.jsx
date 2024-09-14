@@ -8,6 +8,7 @@ import Link from '@/components/link';
 import FlexBox from '@/components/flexbox/FlexBox';
 import { Paragraph } from '@/components/typography';
 // CUSTOM UTILS METHOD
+
 import { isDark } from '@/utils/constants';
 
 // STYLED COMPONENTS
